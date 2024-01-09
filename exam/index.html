@@ -13,9 +13,9 @@
 
 <body>
   <header class="border-bottom border-3 sticky-top">
-    <nav class="navbar navbar-expand-md bg-body-tertiary" style="background-color: rgb(235, 222, 247) !important;">
+    <nav class="navbar navbar-expand-md bg-body-tertiary header-bg">
       <div class="container">
-        <a class="navbar-brand" href="/index.html">
+        <a class="navbar-brand" href="../index.html">
           <img class="img-fluid" src="images/logo_header.svg" alt="logo" style="max-height: 50px; max-width: 50px;">
         </a>
         <div class="d-flex flex-column">
@@ -43,7 +43,7 @@
         <div class="container">
             <div class="row py-md-5 py-3 ">
                 <div class="d-flex col-lg-6 justify-content-center">
-                    <img class="img-fluid" src="images/moscow_photo_mainpage.jpg" alt="web-dev" style="border-radius: 10px;">
+                    <img class="img-fluid moscow-photo-main" src="images/moscow_photo_mainpage.jpg" alt="web-dev">
                 </div>
                 <div class="col-lg-6 text-center d-flex align-items-center">
                     <div>
@@ -67,42 +67,56 @@
 
             <hr class="headingLine mx-auto">
             <div class="row py-md-5">
-              <div class="col-md-3 col-sm-6 text-center mb-5">
-                <img class="img-fluid productsize" src="images/avataricon.png" alt="logo">
-                <h4>-</h4>
+              <div class="col-md-3 col-sm-6 text-center pb-10">
+                <img class="img-fluid photos-main" src="images/professional_guides.jpg" alt="logo">
+                <h4>Профессиональные гиды</h4>
               </div>
               <div class="col-md-3 col-sm-6 text-center mb-5">
-                <img class="img-fluid productsize" src="images/avataricon.png" alt="logo">
-                <h4>-</h4>
+                <img class="img-fluid photos-main" src="images/individual_way.jpg" alt="logo">
+                <h4>Индивидуальный подход</h4>
               </div>
               <div class="col-md-3 col-sm-6 text-center mb-5">
-                <img class="img-fluid productsize" src="images/avataricon.png" alt="logo">
-                <h4>-</h4>
+                <img class="img-fluid photos-main" src="images/unic_routs.jpg" alt="logo">
+                <h4>Уникальные маршруты</h4>
               </div>
               <div class="col-md-3 col-sm-6 text-center mb-5">
-                <img class="img-fluid productsize" src="images/avataricon.png" alt="logo">
-                <h4>-</h4>
+                <img class="img-fluid photos-main" src="images/flexible_time.jpg" alt="logo">
+                <h4>Гибкий график</h4>
               </div>
               <div class="col-md-3 col-sm-6 text-center mb-5">
-                <img class="img-fluid productsize" src="images/avataricon.png" alt="logo">
-                <h4>-</h4>
+                <img class="img-fluid photos-main" src="images/comfort.jpg" alt="logo">
+                <h4>Комфорт и безопасность</h4>
               </div>
               <div class="col-md-3 col-sm-6 text-center mb-5">
-                <img class="img-fluid productsize" src="images/avataricon.png" alt="logo">
-                <h4>-</h4>
+                <img class="img-fluid photos-main" src="images/translator.jpg" alt="logo">
+                <h4>Автоматический перевод</h4>
               </div>
               <div class="col-md-3 col-sm-6 text-center mb-5">
-                <img class="img-fluid productsize" src="images/avataricon.png" alt="logo">
-                <h4>-</h4>
+                <img class="img-fluid photos-main" src="images/interactive.jpg" alt="logo">
+                <h4>Интерактивный формат</h4>
               </div>
               <div class="col-md-3 col-sm-6 text-center mb-5">
-                <img class="img-fluid productsize" src="images/avataricon.png" alt="logo">
-                <h4>-</h4>
+                <img class="img-fluid photos-main" src="images/all_time_support.png" alt="logo">
+                <h4>Круглосуточная поддержка</h4>
               </div>
             </div>
           </div> 
         </section>
 
+        <section>
+          <h2>Список пешходных маршрутов</h2>
+          <form class="row" id="routes-form">
+              <div class="col-12 col-lg-6 my-2">
+                  <label for="searchRoute" class="form-label">Поиск</label>
+                  <input id="searchRoute" name="search" class="form-control" placeholder="Поиск" type="text">
+              </div>
+              <div class="col-12 col-lg-6 my-2">
+                  <label for="objects" class="form-label">Выбор объекта</label>
+                  <select class="form-control" id="objects" name="objects">
+                  </select>
+              </div>
+          </form>
+        </section>
         <selection>
           <div class="container">
             <table id="Table_route" class="table">
@@ -110,23 +124,30 @@
                 <tr>
                   <th scope="col">Название</th>
                   <th scope="col">Описание</th>
-                  <th scope="col">Основные_объекты</th>
-                  <th scope="col">Кнопки выбора</th>
+                  <th scope="col">Основные объекты</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
             </table>
+          
+            <div class="pagination">
+              <button onclick="getBackPage()" class="btn">Назад</button>
+              <div id="btn-p" class="btnpage"></div>
+              <button onclick="getNextPage()" class="btn">Вперед</button>
+            </div>
           </div>
         </selection>
 
         <selection>
           <div class="container">
-            <table id="Table_" class="table">
+            <table id="Table_guid" class="table">
               <thead>
                 <tr>
                   <th scope="col">Название</th>
-                  <th scope="col">Описание</th>
-                  <th scope="col">Основные_объекты</th>
-                  <th scope="col">Кнопки выбора</th>
+                  <th scope="col">Языки</th>
+                  <th scope="col">Опыт работы</th>
+                  <th scope="col">Стоимость</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
             </table>
@@ -163,7 +184,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </template>
-        <script defer src="mnpage.js"></script>
+        <script defer src="Scripts/mnpage.js"></script>
 </body>
 
 </html>

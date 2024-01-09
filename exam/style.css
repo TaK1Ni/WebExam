@@ -1,8 +1,16 @@
 
-
-.productsize {
+.photos-main {
     max-width: 200px; 
     height: 200px;
+    border-radius: 10%;
+}
+
+.moscow-photo-main {
+    border-radius: 10px;
+}
+
+.header-bg {
+    background-color: rgb(235, 222, 247) !important;
 }
 
 .secBack {
@@ -24,7 +32,6 @@
 .border-bottom {
     border-color: rgb(95, 26, 165) !important;
 }
-
 
 .btn {
     background-color: rgb(95, 26, 165);
@@ -51,3 +58,8 @@
     height: 100%;
 }
 
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

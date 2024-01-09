@@ -1,7 +1,23 @@
 'use strict';
 
 const BASE_URL = new URL("http://cat-facts-api.std-900.ist.mospolytech.ru/");
+async function showMessage(title="Уведомление!", message="Успешно", type = "alert-success") {
+    const alert = document.getElementById("alert-template").content.firstElementChild.cloneNode(true);
+    const stitle = document.createElement("strong");
+    stitle.innerHTML = title;
+    alert.querySelector(".msg").innerHTML = `${stitle.outerHTML} ${message}`;
+    alert.classList.add(type);
+    setTimeout(() => alert.remove(), 3000);
+    document.querySelector('.alerts').append(alert);
+}
 
+function showAlert() {
+    showMessage("Важное сообщение", "Товары находятся в разработке!", "alert-info");
+}
+
+function openLkPage() {
+    window.location.href = "lk.html";
+}
 
 const state = {
     page: 1,
@@ -56,7 +72,7 @@ function getRequest(page = 1, perPage = 10, q = "") {
     xhr.onload = function() {
         let json = JSON.parse(xhr.response); //Конвертируем в JSON
         cleanPosts(); 
-        fillPageByCollection(json.records); //Заполнение
+        fillRouteByCollection(json.records); //Заполнение
         pageCounter(json._pagination); 
         numeration();
     };
@@ -107,50 +123,6 @@ function getNextPage() {
     }
 }
 
-async function fillTableFromJson() {
-    // Получение ссылки на таблицу
-var table = document.getElementById('myTable');
-
-// Путь к JSON-файлу
-var jsonUrl = './jsonfile/route_list.json';
-
-// Загрузка JSON-файла
-fetch(jsonUrl)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(data) {
-    // Перебор объектов в JSON-файле
-    for (var key in data) {
-      if (data.hasOwnProperty(key)) {
-        var item = data[key];
-
-        // Создание новой строки в таблице
-        var row = table.insertRow();
-
-        // Вставка данных в ячейки строки
-        var cell1 = row.insertCell();
-        cell1.innerHTML = item['Название'];
-
-        var cell2 = row.insertCell();
-        cell2.innerHTML = item['Описание'];
-
-        var cell3 = row.insertCell();
-        var cell4 = row.insertCell();
-        cell3.innerHTML = item['Основные_объекты'];
-        // Создание кнопки
-        var button = document.createElement('button');
-        button.textContent = 'Выбрать';
-        cell4.appendChild(button);
-
-        
-      }
-    }
-  })
-  .catch(function(error) {
-    console.log('Ошибка загрузки JSON-файла:', error);
-  });
-} 
 
 function getBackPage() {
     if (state.page > 1) {// чекаем все ли хорошо 
