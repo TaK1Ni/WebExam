@@ -55,7 +55,7 @@ function fillGuidByCollection(data) {
     tbody = table.createTBody();
   }
 
-  tbody.innerHTML = ''; 
+  tbody.innerHTML = '';
 
   data.forEach(function(item) {
     var row = tbody.insertRow();
@@ -67,10 +67,10 @@ function fillGuidByCollection(data) {
     languageCell.textContent = item.language;
 
     var experienceCell = row.insertCell();
-    experienceCell.textContent = item.workExperience + ' лет'; 
+    experienceCell.textContent = item.workExperience + ' лет';
 
     var priceCell = row.insertCell();
-    priceCell.textContent = item.pricePerHour + ' в час'; 
+    priceCell.textContent = item.pricePerHour + ' в час';
 
     var buttonCell = row.insertCell();
     var button = document.createElement('button');
@@ -89,7 +89,8 @@ function fillRouteByCollection(data) {
     tbody = table.createTBody();
   }
 
-  tbody.innerHTML = ''; 
+  tbody.innerHTML = ''; // очистка только тела таблицы
+
   stateRoute.pageCount = Math.ceil(data.length / stateRoute.perPage);
 
   var start = (stateRoute.page - 1) * stateRoute.perPage;
@@ -124,11 +125,11 @@ function fillRouteByCollection(data) {
     
     button.textContent = 'Выбрать';
     button.classList.add('btn');
-    var itemID = item['id']; 
-    button.id = itemID; 
+    var itemID = item['id']; // Сохраняем ID элемента в отдельную переменную
+    button.id = itemID; // Присваиваем кнопке ID
         
     button.addEventListener('click', (function(itemID) {
-      console.log(itemID); 
+      console.log(itemID); // здесь будет значение item.id
       sendGuidesRequest(itemID);
     }).bind(null, item.id));
     cell4.appendChild(button);
