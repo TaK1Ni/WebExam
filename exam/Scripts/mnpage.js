@@ -11,7 +11,6 @@ const stateRoute = {
   query: ""
 };
 
-
 async function fillTableRouteFromJson() {
   try {
     let url = new URL(baseUrlRouter);
@@ -47,6 +46,7 @@ async function sendGuidesRequest(routeId) {
     console.log('Ошибка запроса к API:', error);
   }
 }
+
 function fillGuidByCollection(data) {
   var table = document.getElementById('Table_guid');
   var tbody = table.getElementsByTagName('tbody')[0];
@@ -84,7 +84,7 @@ function fillGuidByCollection(data) {
 function fillRouteByCollection(data) {
   var table = document.getElementById('Table_route');
   var tbody = table.getElementsByTagName('tbody')[0];
-  
+
   if (!tbody) {
     tbody = table.createTBody();
   }
@@ -113,21 +113,21 @@ function fillRouteByCollection(data) {
 
     var mainObjectItems = item['mainObject'].split(/[-,–](?=.)/);
     var mainObjectList = document.createElement('ul');
-    
+
     mainObjectItems.forEach(function(mainObjectItem) {
       var listItem = document.createElement('li');
       listItem.textContent = mainObjectItem.trim();
       mainObjectList.appendChild(listItem);
     });
     cell3.appendChild(mainObjectList);
-    
+
     var button = document.createElement('button');
-    
+
     button.textContent = 'Выбрать';
     button.classList.add('btn');
     var itemID = item['id']; // Сохраняем ID элемента в отдельную переменную
     button.id = itemID; // Присваиваем кнопке ID
-        
+
     button.addEventListener('click', (function(itemID) {
       console.log(itemID); // здесь будет значение item.id
       sendGuidesRequest(itemID);
@@ -136,16 +136,14 @@ function fillRouteByCollection(data) {
   }
 }
 
-
-
-function getNextPage() {
+function getNextPage() { // eslint-disable-line no-unused-vars
   if (stateRoute.page < stateRoute.pageCount) {
     stateRoute.page++;
-    fillTableRouteFromJson();
+    fillTableRouteFromJson()
   }
 }
 
-function getBackPage() {
+function getBackPage() { // eslint-disable-line no-unused-vars
   if (stateRoute.page > 1) {
     stateRoute.page--;
     fillTableRouteFromJson();
